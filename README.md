@@ -4,13 +4,13 @@ A "Music Universe" visualization tool that maps high-dimensional audio features 
 
 ## 🌟 Features
 
-*   **Interactive 2D Map**: visualized using Plotly.js, allowing zooming, panning, and hovering.
-*   **PCA Engine**: Reduces 9 audio dimensions (Danceability, Energy, Acousticness, etc.) to 2 principal components.
+*   **Interactive 3D Map**: visualized using Plotly.js, allowing zooming, panning, and hovering.
+*   **PCA Engine**: Reduces 9 audio dimensions (Danceability, Energy, Acousticness, etc.) to 3 principal components.
 *   **Taste Clusters**: Uses K-Means clustering to color-code distinct musical styles in the dataset.
 *   **Explainable AI**:
-    *   **Explained Variance**: Shows how much information is retained (e.g., ~46%).
+    *   **Explained Variance**: Shows how much information is retained (e.g., ~57%).
     *   **Component Loadings**: Explains what each axis represents (e.g., "X-axis ≈ Energy vs Acousticness").
-*   **Recommendations**: Click any song to find the nearest neighbors in the 2D PCA space (Euclidean distance).
+*   **Recommendations**: Click any song to find the nearest neighbors in the 3D PCA space (Euclidean distance).
 *   **Taste Center**: Visualizes the centroid of the current dataset/playlist.
 
 ## 🏗️ Architecture
@@ -20,7 +20,7 @@ A "Music Universe" visualization tool that maps high-dimensional audio features 
 *   **Logic**:
     1.  **Ingestion**: Loads CSV data with audio features.
     2.  **Preprocessing**: Standardizes features using `StandardScaler` (Mean=0, Std=1).
-    3.  **Dimensionality Reduction**: Applies PCA to project data onto 2 components.
+    3.  **Dimensionality Reduction**: Applies PCA to project data onto 3 components.
     4.  **Clustering**: Applies K-Means (k=5) on the projected data for grouping.
     5.  **API**: Exposes endpoints for data retrieval and recommendation logic.
 
@@ -60,7 +60,7 @@ We use PCA to visualize the "structure" of music taste.
 *   **Output**: The X-axis (PC1) usually captures the largest spread (e.g., High Energy vs Low Energy), and the Y-axis (PC2) captures the next largest variation (e.g., Acoustic vs Electronic).
 
 ### Recommendations
-Recommendations are based on **Euclidean Distance** in the reduced 2D PCA space. This ensures that songs that *look* close together on the map are mathematically similar in the dominant aesthetic features.
+Recommendations are based on **Euclidean Distance** in the reduced 3D PCA space. This ensures that songs that *look* close together on the map are mathematically similar in the dominant aesthetic features.
 
 ## 📂 Project Structure
 ```
